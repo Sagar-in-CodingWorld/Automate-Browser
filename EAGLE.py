@@ -1,8 +1,6 @@
 from selenium import webdriver;
 from selenium.webdriver.common.by import By
 import time
-#from selenium.webdriver.support.wait import WebDriverWait
-#from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import Select 
 
 from selenium.webdriver.common.keys import Keys
@@ -21,22 +19,11 @@ import pygame
 
 
 JANUARY = []
-FEBRUARY = []
-APRIL = [
-      
-      "02-Apr-2024",
-      "03-Apr-2024",
-      "04-Apr-2024",
-      "11-Apr-2024",
-      "16-Apr-2024",
-      "17-Apr-2024",
-      "18-Apr-2024",
-      "23-Apr-2024",
-      "24-Apr-2024",
-      "25-Apr-2024",
-      "30-Apr-2024"
-      
-     ]
+FEBRUARY = [
+            "26-Feb-2024",
+            "27-Feb-2024",
+            "28-Feb-2024",
+            ]
 MARCH = [
       
       "05-Mar-2024",
@@ -52,10 +39,71 @@ MARCH = [
       "28-Mar-2024"      
       
      ]
-MAY = []
-JUNE = []
-JULY = []
-AUGUST = ["08-Aug-2024"]
+
+APRIL = [
+      
+      "02-Apr-2024",
+      "03-Apr-2024",
+      "04-Apr-2024",
+      "11-Apr-2024",
+      "16-Apr-2024",
+      "17-Apr-2024",
+      "18-Apr-2024",
+      "23-Apr-2024",
+      "24-Apr-2024",
+      "25-Apr-2024",
+      "30-Apr-2024"
+      ]
+
+MAY = ["02-May-2024",
+       "07-May-2024",
+       "09-May-2024",
+       "14-May-2024",
+       "15-May-2024",
+       "16-May-2024",
+       "21-May-2024",
+       "22-May-2024",
+       "28-May-2024",
+       "29-May-2024",
+       "30-May-2024"
+       
+       ]
+
+JUNE = ["04-Jun-2024",
+        "05-Jun-2024",
+        "06-Jun-2024",
+        "11-Jun-2024",
+        "12-Jun-2024",
+        "13-Jun-2024",
+        "18-Jun-2024",
+        "19-Jun-2024",
+        "20-Jun-2024",
+        "25-Jun-2024",
+        "26-Jun-2024",
+        "27-Jun-2024"
+        ]
+
+JULY = ["02-Jul-2024",
+        "04-Jul-2024",
+        "09-Jul-2024",
+        "11-Jul-2024",
+        "16-Jul-2024",
+        "18-Jul-2024",
+        "23-Jul-2024",
+        "25-Jul-2024",
+        "30-Jul-2024",
+        ]
+
+AUGUST = ["01-Aug-2024",
+          "06-Aug-2024",
+          "08-Aug-2024",
+          "13-Aug-2024",
+          "20-Aug-2024",
+          "22-Aug-2024",
+          "27-Aug-2024",
+          "29-Aug-2024",
+          ]
+
 SEPTEMBER = []
 OCTOBER = []
 NOVEMBER = []
@@ -63,9 +111,9 @@ DECEMBER = []
 
 
 pygame.init()
-sound = pygame.mixer.Sound('sounds/eagle.mp3')
-errorSound = pygame.mixer.Sound('sounds/error.mp3')
-exception = pygame.mixer.Sound('sounds/exception.mp3')
+sound = pygame.mixer.Sound('eagle.mp3')
+errorSound = pygame.mixer.Sound('error.mp3')
+exception = pygame.mixer.Sound('exception.mp3')
 
 URL = "http://reciprocal.wbhealth.gov.in/Login.aspx"
 SCHEDULE_URL = "http://reciprocal.wbhealth.gov.in/ScheduleDateForUser.aspx"
@@ -258,7 +306,7 @@ while ( loop_condition ):
                 #BACKWARD LOOP
                 driver.find_element(By.XPATH,f"//select/option[text()='{month[(-1)*i]}']").click()
                 ScanSlot = int(driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_lblAlreadySched").text)
-                print('{',month[(-1)*i],'}',"ScanSlot value is ",ScanSlot)
+                print('{',month[(-1)*i],'}',"Already Booked Slots :-",ScanSlot)
                 if(ScanSlot < 120):
                     sound.play()
                     
@@ -304,7 +352,7 @@ while ( loop_condition ):
         sss = ActionChains(driver).double_click(target_element).perform()'''
 
         ScanSlot = int(driver.find_element(By.ID, "ctl00_ContentPlaceHolder1_lblAlreadySched").text)
-        print('{',month[i],'}',"ScanSlot value is ",ScanSlot)
+        print('{',month[i],'}',"Already Booked Slots :-",ScanSlot)
         #i=i+1
         
         if(ScanSlot < 120):
